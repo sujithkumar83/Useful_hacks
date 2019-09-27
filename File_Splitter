@@ -1,5 +1,5 @@
 #Method 1
 
-Open Powershell. Click 'Show Script'. Change the variables appropriately. Then Save it (CTRL+ Save)
+Open Powershell ISE (or search with it). Click 'Show Script'. Change the variables appropriately. Then Save it (CTRL+ Save)
 
 $i=0; Get-Content C:\Users\Gavin\Downloads\Hospital_Revised_Flatfiles\HCAHPSHospital.csv -ReadCount 2500 | %{$i++; $_ | Out-File C:\Users\Gavin\Downloads\Hospital_Revised_Flatfiles\split\splitfile_$i.csv}
