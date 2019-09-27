@@ -4,3 +4,65 @@ Open Powershell ISE (or search with it). Click 'Show Script'. Change the variabl
 
 
 $i=0; Get-Content C:\Users\sujithk\Desktop\RTE\rte_counts_latest1.csv -ReadCount 250000 | %{$i++; $_ | Out-File C:\Users\sujithk\Desktop\RTE\rtecounts_$i.csv}
+
+
+#Method 2
+
+Open a new Text document. Copy and paste the following:
+
+@echo off
+
+setlocal ENABLEDELAYEDEXPANSION
+
+REM Edit this value to change the name of the file that needs splitting. Include the extension.
+
+SET BFN=rte.csv
+
+REM Edit this value to change the number of lines per file.
+
+SET LPF=2500
+
+REM Edit this value to change the name of each short file. It will be followed by a number indicating where it is in the list.
+
+SET SFN=rtesplit
+
+REM Do not change beyond this line.
+
+SET SFX=%BFN:~-3%
+
+SET /A LineNum=0
+
+SET /A FileNum=1
+
+For /F "delims==" %%l in (%BFN%) Do (
+
+SET /A LineNum+=1
+
+echo %%l >> %SFN%!FileNum!.%SFX%
+
+if !LineNum! EQU !LPF! (
+
+SET /A LineNum=0
+
+SET /A FileNum+=1
+
+)
+
+)
+
+endlocal
+
+Pause
+
+Here is what the configurations mean for the batch file before running. 
+
+“SET BFN=” should point to the CSV you need to break down
+“SET LPF=” is the number of rows you’d like to limit your new file to
+“SET SFN=” is the new naming scheme for your split files
+
+Save the file with a .BAT extn, and press OK when if a warning appears.
+
+
+#Method with Excel: Load It in a Data Model
+
+The data from the original CSV will be can be accessed within a Data Model in excel. it can then be analysed with a pivot tale. Check Josh Barreto's blog  
