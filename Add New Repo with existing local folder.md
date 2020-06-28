@@ -24,3 +24,5 @@
   - `# this will now work as expected`
   - `$git push origin master`
 
+- refrerences for further errors
+  - https://georgik.rocks/common-mistake-when-creating-new-git-repo/
