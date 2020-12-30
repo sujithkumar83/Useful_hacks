@@ -1,4 +1,6 @@
 // Protobuf Uber V1 Style Guide
+
+// see this too https://developers.google.com/protocol-buffers/docs/style#message-and-field-names
 //
 // This is the default style enforced with lint.
 //
